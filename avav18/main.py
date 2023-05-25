@@ -1,9 +1,5 @@
 import numpy as np
 
-def normalize(v):
-  norm = np.linalg.norm(v)
-  return v / norm
-
 def regular_power(A, v0, eps = 0.000001):
   lmbda_old = 0
   lmbda_new = 0
@@ -16,7 +12,7 @@ def regular_power(A, v0, eps = 0.000001):
     lmbda_old = lmbda_new
     vk_old = np.copy(vk_new)
 
-    x_old = normalize(vk_old)
+    x_old = vk_old / np.linalg.norm(vk_old)
     vk_new = np.dot(A, x_old)
     lmbda_new = np.dot(x_old.T, vk_new)
 
